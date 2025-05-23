@@ -18,7 +18,7 @@ func TestGetAPIKey(t *testing.T) {
 				"Authorization": []string{"ApiKey my-secret-api-key"},
 			},
 			expectedAPIKey: "my-secret-api-key",
-			expectError:    true,
+			expectError:    false,
 		},
 		{
 			name: "missing API key",
@@ -26,7 +26,7 @@ func TestGetAPIKey(t *testing.T) {
 				"Authorization": []string{"ApiKey"},
 			},
 			expectedAPIKey: "",
-			expectError:    false,
+			expectError:    true,
 		},
 		{
 			name: "invalid header format",
@@ -34,7 +34,7 @@ func TestGetAPIKey(t *testing.T) {
 				"Authorization": []string{"Bearer my-secret-api-key"},
 			},
 			expectedAPIKey: "",
-			expectError:    false,
+			expectError:    true,
 		},
 	}
 
